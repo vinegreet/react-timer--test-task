@@ -1,0 +1,105 @@
+
+@mixin clearfix {
+	zoom:1;
+
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+
+}
+//-----------gradient---------------
+@mixin background-gradient($start-color, $end-color, $orientation) {
+	background: $start-color;
+
+	@if $orientation == 'vertical' {
+		background: linear-gradient(to bottom, $start-color, $end-color);
+	} @else if $orientation == 'horizontal' {
+		background: linear-gradient(to right, $start-color, $end-color);
+	} @else {
+		background: radial-gradient(ellipse at center, $start-color, $end-color);
+	}
+}
+
+//-------------font face--------------------
+@mixin font-face($font-family, $font-name, $font-weight: normal, $font-style: normal) {
+	@font-face {
+		font-family: quote($font-family);
+		src: url('assets/fonts/'+ $font-name + '.woff2') format('woff2'),
+					 url('assets/fonts/'+ $font-name + '.woff') format('woff');
+		font-weight: $font-weight;
+		font-style: $font-style;
+	}
+}
+
+//-------------input placeholder---------------------
+@mixin placeholder($color: null, $font: null, $weight: null){
+	&::-webkit-input-placeholder { color:$color; font-family:$font; font-weight: $weight; }
+	&::-moz-placeholder { color:$color; font-family:$font; font-weight: $weight; }
+	&:-ms-input-placeholder { color:$color; font-family:$font; font-weight: $weight; }
+	&:-moz-placeholder { color:$color; font-family:$font; font-weight: $weight; }
+}
+
+@mixin focusPlaceholder($color: null, $weight: null) {
+	&:focus::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		color: $color;
+		font-weight: $weight;
+	}
+	&:focus::-moz-placeholder { /* Firefox 19+ */
+		color: $color;
+		font-weight: $weight;
+	}
+	&:focus:-ms-input-placeholder { /* IE 10+ */
+		color: $color;
+		font-weight: $weight;
+	}
+}
+
+@mixin columns($count, $gap){
+	column-count:         $count;
+	column-gap:           $gap;
+}
+
+@mixin flex($justify: center, $align: center, $direction: null, $wrap: null) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+	flex-direction: $direction;
+	flex-wrap: $wrap;
+}
+
+@mixin beforeAfterDefaults {
+	content: '';
+	display: block;
+}
+
+@mixin contactFont {
+	font-size: 0.8rem;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+@mixin modalBeforeAfter {
+	@include beforeAfterDefaults();
+	@include sprite($ui-tether-border);
+	position: absolute;
+	top: 2.3rem;
+}
+
+@mixin icon($icon) {
+	@include beforeAfterDefaults();
+	@include sprite($icon);
+}
+
+@mixin linkUnderline {
+	text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@mixin socialNetworksDesktopColor {
+  border-color: $gray;
+  svg { fill: $gray; }
+}

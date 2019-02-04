@@ -1,0 +1,98 @@
+.App {
+  height: 100%;
+  text-align: center;
+  padding-top: 7rem;
+  font-size: 4.5rem;
+  @include flex(space-around, center);
+}
+
+.Timer {
+  @include flex(flex-start, center, column);
+}
+
+.timer {
+  height: 7rem;
+  width: 24rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  transform: rotate3d(-1, -1, 0, 24deg);
+  transform-style: preserve-3d;
+  perspective: 250rem;
+  transition: all .5s ease;
+  &--active {
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+  &__face {
+    position: absolute;
+    @include flex;
+    height: 100%;
+    border: .4rem solid #333;
+    background-color: #333;
+    color: #224354;
+    &--front {
+      background: #99a099;
+      transform: translateZ(3.5rem);
+      width: 100%;
+    }
+    &--back {
+      transform: rotateY(180deg) translateZ(3.5rem);
+      width: 100%;
+    }
+    &--right {
+      transform: rotateY(90deg) translateZ(20.5rem);
+      width: 7rem;
+    }
+    &--left {
+      transform: rotateY(-90deg) translateZ(3.5rem);
+      width: 7rem;
+    }
+    &--top {
+      transform: rotateX(90deg) translateZ(3.5rem);
+      width: 100%;
+    }
+    &--bottom {
+      transform: rotateX(-90deg) translateZ(3.5rem);
+      width: 100%;
+    }
+  }
+}
+
+.startBtn {
+  margin: 0 1em;
+}
+
+.split {
+  cursor: pointer;
+  font-size: .7em;
+  &:before {
+		content: '►';
+		display: inline-block;
+    font-size: .5em;
+    margin-right: 1rem;
+		vertical-align: middle;
+	}
+}
+
+.title {
+  font-family: sans-serif;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
+@media (orientation: portrait) {
+
+  .App {
+    padding-top: 3rem;
+    flex-direction: column;
+  }
+
+  .Timer {
+    width: 100%;
+    &:first-child {
+      padding-bottom: 3rem;
+      margin-bottom: 3rem;
+      border-bottom: .1rem solid #000;
+    }
+  }
+
+}
