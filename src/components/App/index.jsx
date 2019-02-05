@@ -7,10 +7,12 @@ class App extends Component {
   state = {
     isActive: false,
     date: {
+      activeSplitIdx: null,
       splitsArray: [],
       timer: 0
     },
     interval: {
+      activeSplitIdx: null,
       splitsArray: [],
       timer: 0
     }
@@ -75,14 +77,14 @@ class App extends Component {
     this.stop();
     this.setState(prev => ({
       date: {
-        output: prev.date.splitsArray[idx].output,
         timer: prev.date.splitsArray[idx].timer,
-        splitsArray: prev.date.splitsArray.slice(0, idx + 1)
+        splitsArray: prev.date.splitsArray.slice(0, idx + 1),
+        activeSplitIdx: idx
       },
       interval: {
-        output: prev.interval.splitsArray[idx].output,
         timer: prev.interval.splitsArray[idx].timer,
-        splitsArray: prev.interval.splitsArray.slice(0, idx + 1)
+        splitsArray: prev.interval.splitsArray.slice(0, idx + 1),
+        activeSplitIdx: idx
       }
     }));
   }
@@ -95,12 +97,14 @@ class App extends Component {
           isActive={isActive}
           timer={date.timer}
           splitsArray={date.splitsArray}
+          activeSplitIdx={date.activeSplitIdx}
           onTimerClick={this.handleTimerClick}
           onSplitClick={this.handleSplitClick} />
         <Timer title="setInterval and incrementation"
           isActive={isActive}
           timer={interval.timer}
           splitsArray={interval.splitsArray}
+          activeSplitIdx={interval.activeSplitIdx}
           onTimerClick={this.handleTimerClick}
           onSplitClick={this.handleSplitClick} />
       </div>

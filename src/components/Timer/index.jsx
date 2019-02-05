@@ -13,11 +13,11 @@ class Timer extends Component {
   }
 
   render() {
-    const { isActive, onSplitClick, onTimerClick, splitsArray, timer, title } = this.props;
+    const { activeSplitIdx, isActive, onSplitClick, onTimerClick, splitsArray, timer, title } = this.props;
     const format = this.formatTime;
     const splitElements = (!splitsArray)? null : splitsArray.map((item, idx) => (
-      <li className="split" onClick={onSplitClick} key={idx} data-idx={idx}>
-        {format(item.timer)}
+      <li className={`split${(idx === activeSplitIdx)? ' split--active' : ''}`} onClick={onSplitClick} key={idx} data-idx={idx}>
+        {format(item.split)}
       </li>
     ));
 

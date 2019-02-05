@@ -10,10 +10,16 @@
   @include flex(flex-start, center, column);
 }
 
+.title {
+  font-family: sans-serif;
+  font-size: 2rem;
+  margin-bottom: 4.5rem;
+}
+
 .timer {
   height: 7rem;
   width: 24rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3.5rem;
   cursor: pointer;
   transform: rotate3d(-1, -1, 0, 24deg);
   transform-style: preserve-3d;
@@ -26,11 +32,11 @@
     position: absolute;
     @include flex;
     height: 100%;
-    border: .4rem solid #333;
-    background-color: #333;
-    color: #224354;
+    border: .4rem solid $black;
+    background-color: $black;
+    color: $blue;
     &--front {
-      background: #99a099;
+      background: $gray;
       transform: translateZ(3.5rem);
       width: 100%;
     }
@@ -64,6 +70,9 @@
 .split {
   cursor: pointer;
   font-size: .7em;
+  &--active {
+    color: $rosy;
+  }
   &:before {
 		content: '►';
 		display: inline-block;
@@ -71,12 +80,6 @@
     margin-right: 1rem;
 		vertical-align: middle;
 	}
-}
-
-.title {
-  font-family: sans-serif;
-  font-size: 2rem;
-  margin-bottom: 3rem;
 }
 
 @media (orientation: portrait) {
@@ -91,7 +94,7 @@
     &:first-child {
       padding-bottom: 3rem;
       margin-bottom: 3rem;
-      border-bottom: .1rem solid #000;
+      border-bottom: .1rem solid $black;
     }
   }
 
