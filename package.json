@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "fstream": "^1.0.12",
+    "js-yaml": "^3.13.1",
     "lodash.mergewith": "^4.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
